@@ -3,7 +3,7 @@ import fs from "fs";
 
 const app = express();
 const readData = (nombreFichero) => {
-    const data = fs.readFileSync(`./${nombreFichero}.json`);
+    const data = fs.readFileSync(`${nombreFichero}.json`);
     return JSON.parse(data);
 }
 
