@@ -13,7 +13,7 @@ app.get("/", (req, res) => {
 })
 
 app.get("/radiacion", (req, res) => {
-    const radiacion = readData("radiacionSolar");
+    const radiacion = readData("RadiacionSolar");
     res.json(radiacion);
 })
 
