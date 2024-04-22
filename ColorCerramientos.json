@@ -1,0 +1,26 @@
+{
+	"color_superficie":[{
+		"sur": {
+			"claro":2,
+			"medio":3,
+			"oscuro":3
+		}
+	},
+	{
+		"este-oeste":{
+			"claro":3,
+			"medio":4,
+			"oscuro":5
+		}
+	},
+	{
+		"cubieta":{
+			"claro":5,
+			"medio":9,
+			"oscuro":11
+		}
+	}]
+}
+	
+	
+	
