@@ -25,9 +25,8 @@ app.get("/radiacion", (req, res) => {
 app.get("/ODA", (req, res) => {
   try {
     const datosOda = readData("Oda");
-    const datosResidenciales = datosOda.oda;
-    res.json(datosResidenciales);
-    res.json(oda);
+    
+    res.json(datosOda);
   } catch (error) {
     res.status(500).json({ error: "Error al leer los datos de IDA" });
   }
