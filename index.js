@@ -8,7 +8,7 @@ const readData = (nombreFichero) => {
 };
 
 app.get("/", (req, res) => {
-  res.send("Hola mundo");
+  res.send("Ok");
 });
 
 app.get("/radiacion", (req, res) => {
@@ -25,14 +25,14 @@ app.get("/radiacion", (req, res) => {
 app.get("/ODA", (req, res) => {
   try {
     const datosOda = readData("Oda");
-    
+
     res.json(datosOda);
   } catch (error) {
     res.status(500).json({ error: "Error al leer los datos de IDA" });
   }
 });
 
-app.get('/ODA/:id', (req, res) => {
+app.get("/ODA/:id", (req, res) => {
   try {
     const Oda = readData("Oda");
     const oda = Oda[req.params.id];
@@ -45,7 +45,6 @@ app.get('/ODA/:id', (req, res) => {
     res.status(500).json({ error: "Error al leer los datos de ODA" });
   }
 });
-
 
 app.get("/IDA", (req, res) => {
   try {
@@ -65,6 +64,23 @@ app.get("/IDA/residencial", (req, res) => {
     res
       .status(500)
       .json({ error: "Error al leer los datos residenciales de IDA" });
+  }
+});
+
+app.get("/IDA/residencial/:habitaciones", (req, res) => {
+  try {
+    const datosIDA = readData("IDA");
+    const residencialesIDA = datosIDA.IDA.residencial;
+    const habitaciones = residencialesIDA.find(
+      (residencial) => residencial.habitaciones === parseInt(req.params.habitaciones)
+    );
+    if (habitaciones) {
+      res.json(habitaciones);
+    } else {
+      res.status(404).json({ error: "Datos residenciales para el número de habitaciones especificado no encontrados en IDA" });
+    }
+  } catch (error) {
+    res.status(500).json({ error: "Error al leer los datos residenciales de IDA" });
   }
 });
 
