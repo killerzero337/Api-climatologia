@@ -7,8 +7,16 @@ const readData = (nombreFichero) => {
   return JSON.parse(data);
 };
 
+// Modificar el raiz para en un futuro añadir una ruta hacia una web con documentacion de API.
+// quizas pueda hacer eso en react o incluso puedo practicar angular usando Typescript
 app.get("/", (req, res) => {
-  res.send("Ok");
+  res.send(
+    "Bienvenido a la API de climatologia de el instituto Inca Garcilaso Montilla."
+  );
+});
+
+app.get("/status", (req, res) => {
+  res.send("OK");
 });
 
 app.get("/radiacion", (req, res) => {
@@ -22,7 +30,19 @@ app.get("/radiacion", (req, res) => {
   }
 });
 
-app.get("/ODA", (req, res) => {
+app.get("/color", (req, res) => {
+  try {
+    const color = readData("ColorCerramientos");
+
+    res.json(color);
+  } catch (error) {
+    res
+      .status(500)
+      .json({ error: "Error al leer los datos de radiación solar" });
+  }
+});
+
+app.get("/oda", (req, res) => {
   try {
     const datosOda = readData("Oda");
 
@@ -32,7 +52,7 @@ app.get("/ODA", (req, res) => {
   }
 });
 
-app.get("/ODA/:id", (req, res) => {
+app.get("/oda/:id", (req, res) => {
   try {
     const Oda = readData("Oda");
     const oda = Oda[req.params.id];
@@ -46,7 +66,40 @@ app.get("/ODA/:id", (req, res) => {
   }
 });
 
-app.get("/IDA", (req, res) => {
+app.get("/coef", (req, res) => {
+  try {
+    const coefData = readData("coef");
+    res.json(coefData);
+  } catch (error) {
+    res.status(500).json({ error: "Error al leer los datos de Coef.json" });
+  }
+});
+
+app.get("/coef/vidrios", (req, res) => {
+  try {
+    const coef = readData("coef");
+    const coefDatos = coef.vidrios;
+    res.json(coefDatos);
+  } catch (error) {
+    res
+      .status(500)
+      .json({ error: "Error al leer los datos residenciales de IDA" });
+  }
+});
+
+app.get("/coef/transmision", (req, res) => {
+  try {
+    const coef = readData("coef");
+    const coefDatos = coef.transmision;
+    res.json(coefDatos);
+  } catch (error) {
+    res
+      .status(500)
+      .json({ error: "Error al leer los datos residenciales de IDA" });
+  }
+});
+
+app.get("/ida", (req, res) => {
   try {
     const radiacion = readData("IDA");
     res.json(radiacion);
@@ -55,7 +108,7 @@ app.get("/IDA", (req, res) => {
   }
 });
 
-app.get("/IDA/residencial", (req, res) => {
+app.get("/ida/residencial", (req, res) => {
   try {
     const datosIDA = readData("IDA");
     const datosResidenciales = datosIDA.IDA.residencial;
@@ -67,24 +120,32 @@ app.get("/IDA/residencial", (req, res) => {
   }
 });
 
-app.get("/IDA/residencial/:habitaciones", (req, res) => {
+app.get("/ida/residencial/:habitaciones", (req, res) => {
   try {
     const datosIDA = readData("IDA");
     const residencialesIDA = datosIDA.IDA.residencial;
     const habitaciones = residencialesIDA.find(
-      (residencial) => residencial.habitaciones === parseInt(req.params.habitaciones)
+      (residencial) =>
+        residencial.habitaciones === parseInt(req.params.habitaciones)
     );
     if (habitaciones) {
       res.json(habitaciones);
     } else {
-      res.status(404).json({ error: "Datos residenciales para el número de habitaciones especificado no encontrados en IDA" });
+      res
+        .status(404)
+        .json({
+          error:
+            "Datos residenciales para el número de habitaciones especificado no encontrados en IDA",
+        });
     }
   } catch (error) {
-    res.status(500).json({ error: "Error al leer los datos residenciales de IDA" });
+    res
+      .status(500)
+      .json({ error: "Error al leer los datos residenciales de IDA" });
   }
 });
 
-app.get("/IDA/permanente", (req, res) => {
+app.get("/ida/permanente", (req, res) => {
   try {
     const datosIDA = readData("IDA");
     const permanente = datosIDA.IDA.permanente;
@@ -97,7 +158,7 @@ app.get("/IDA/permanente", (req, res) => {
   }
 });
 
-app.get("/IDA/no_permanente", (req, res) => {
+app.get("/ida/no_permanente", (req, res) => {
   const datosIDA = readData("IDA");
   const datosNoPermanentes = datosIDA.IDA.no_permanente;
   res.json(datosNoPermanentes);

@@ -1,8 +1,0 @@
-{
-	"tipo":"f",
-	"normal":1,
-	"doble":[0.8, 0.9],
-	"triple":[0.7, 0.8],
-	"baja_emisividad":[0.1,0.5]
- }
- 
