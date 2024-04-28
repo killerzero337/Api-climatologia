@@ -1,28 +1,15 @@
 import express from "express";
 import fs from "fs";
+import cors from "cors";
 
 const app = express();
+app.use(cors())
 const readData = (nombreFichero) => {
   const data = fs.readFileSync(`./db/${nombreFichero}.json`);
   return JSON.parse(data);
 };
 
-app.use(function (req, res, next) {
-  const allowedOrigins = [
-    "http://localhost:5500",
-  ];
-  const origin = req.headers.origin;
-  if (allowedOrigins.includes(origin)) {
-    res.setHeader("Access-Control-Allow-Origin", origin);
-  }
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-  );
-  res.header("Access-Control-Allow-credentials", true);
-  res.header("Access-Control-Allow-Methods", "GET");
-  next();
-});
+
 
 // Modificar el raiz para en un futuro añadir una ruta hacia una web con documentacion de API.
 // quizas pueda hacer eso en react o incluso puedo practicar angular usando Typescript
@@ -148,10 +135,12 @@ app.get("/ida/residencial/:habitaciones", (req, res) => {
     if (habitaciones) {
       res.json(habitaciones);
     } else {
-      res.status(404).json({
-        error:
-          "Datos residenciales para el número de habitaciones especificado no encontrados en IDA",
-      });
+      res
+        .status(404)
+        .json({
+          error:
+            "Datos residenciales para el número de habitaciones especificado no encontrados en IDA",
+        });
     }
   } catch (error) {
     res
