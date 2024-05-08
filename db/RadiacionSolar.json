@@ -1,12 +1,12 @@
 {
 	"norte":38,
-	"noroeste":32,
+	"noreste":32,
 	"este":32,
 	"sureste":32,
 	"sur":49,
 	"suroste":423,
 	"oeste":556,
-	"noreste":350,
+	"noroeste":350,
 	"horizonte":372
  }
  
