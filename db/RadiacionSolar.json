@@ -1,12 +1,12 @@
 {
-	"n":38,
-	"ne":32,
-	"e":32,
-	"se":32,
-	"s":49,
-	"so":423,
-	"o":556,
-	"no":350,
-	"horiz":372
+	"norte":38,
+	"noroeste":32,
+	"este":32,
+	"sureste":32,
+	"sur":49,
+	"suroste":423,
+	"oeste":556,
+	"noreste":350,
+	"horizonte":372
  }
  
