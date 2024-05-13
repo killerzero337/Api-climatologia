@@ -1,8 +1,8 @@
-API de Climatología del Instituto Inca Garcilaso Montilla
+## API de Climatología del Instituto Inca Garcilaso Montilla
 
 Esta API proporciona acceso a datos relacionados con la climatología y otros aspectos relevantes del Instituto Inca Garcilaso Montilla.
 
-## Endpoints Disponibles:
+### Endpoints Disponibles:
 
 | Método | Endpoint                              | Descripción                                           |
 |--------|--------------------------------------|-------------------------------------------------------|
@@ -12,7 +12,7 @@ Esta API proporciona acceso a datos relacionados con la climatología y otros as
 | GET    | /oda                                 | Obtiene datos de ODA (Objetivos de Desarrollo del Agua). |
 | GET    | /oda/:id                             | Obtiene datos específicos de ODA por su ID.           |
 | GET    | /coef                                | Obtiene datos de coeficientes.                        |
-| GET    | /coef/vidrios                        | Obtiene datos de coeficientes para vidrios.           |
+| GET    | /vidrios                             | Obtiene datos vidrios.           |
 | GET    | /coef/transmision                    | Obtiene datos de coeficientes de transmisión.         |
 | GET    | /ida                                 | Obtiene datos de IDA (Índice de Desarrollo del Agua). |
 | GET    | /ida/residencial                     | Obtiene datos residenciales de IDA.                  |

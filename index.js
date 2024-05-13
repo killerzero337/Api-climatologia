@@ -23,6 +23,15 @@ app.get("/status", (req, res) => {
   res.send("OK");
 });
 
+app.get("/vidrios", (req, res) => {
+  try {
+    const coefData = readData("vidrios");
+    res.json(coefData);
+  } catch (error) {
+    res.status(500).json({ error: "Error al leer los datos de vidrios.json" });
+  }
+});
+
 app.get("/radiacion", (req, res) => {
   try {
     const radiacion = readData("RadiacionSolar");
