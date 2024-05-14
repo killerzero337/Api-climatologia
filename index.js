@@ -88,27 +88,27 @@ app.get("/coef", (req, res) => {
   }
 });
 
-app.get("/coef/vidrios", (req, res) => {
+app.get("/coef/exteriores", (req, res) => {
   try {
     const coef = readData("coef");
-    const coefDatos = coef.vidrios;
+    const coefDatos = coef.Elementos_exteriores;
     res.json(coefDatos);
   } catch (error) {
     res
       .status(500)
-      .json({ error: "Error al leer los datos residenciales de IDA" });
+      .json({ error: "Error al leer los datos Coef" });
   }
 });
 
-app.get("/coef/transmision", (req, res) => {
+app.get("/coef/interiores", (req, res) => {
   try {
     const coef = readData("coef");
-    const coefDatos = coef.transmision;
+    const coefDatos = coef.Tabiques_interiores;
     res.json(coefDatos);
   } catch (error) {
     res
       .status(500)
-      .json({ error: "Error al leer los datos residenciales de IDA" });
+      .json({ error: "Error al leer los datos Coef" });
   }
 });
 

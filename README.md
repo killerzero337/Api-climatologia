@@ -14,8 +14,9 @@ Url: https://api-climatologia.onrender.com/
 | GET    | /oda                                 | Obtiene datos de ODA (Objetivos de Desarrollo del Agua). |
 | GET    | /oda/:id                             | Obtiene datos específicos de ODA por su ID.           |
 | GET    | /coef                                | Obtiene datos de coeficientes.                        |
-| GET    | /vidrios                             | Obtiene datos vidrios.           |
-| GET    | /coef/transmision                    | Obtiene datos de coeficientes de transmisión.         |
+| GET    | /coef/exteriores                     | Obtiene datos de coeficientes de los elementos exteriores.           |
+| GET    | /coef/interiores                     | Obtiene datos de coeficientes de los tabiques interiores.           |
+| GET    | /vidrios                             | Obtiene datos vidrios.         |
 | GET    | /ida                                 | Obtiene datos de IDA (Índice de Desarrollo del Agua). |
 | GET    | /ida/residencial                     | Obtiene datos residenciales de IDA.                  |
 | GET    | /ida/residencial/:habitaciones       | Obtiene datos residenciales de IDA por número de habitaciones. |
